@@ -1,0 +1,22 @@
+{
+  "name": "56bbs-fajhur",
+  "description": "",
+  "homepage": "https://stackblitz.com/edit/56bbs-fajhur",
+  "dependencies": {
+    "react": "16.1.1",
+    "react-dom": "16.1.1",
+    "react-scripts": "1.0.10",
+    "redux": "4.0.0-rc.1",
+    "react-redux": "5.0.7",
+    "redux-actions": "2.3.0"
+  },
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "build-sass": "node-sass -w --source-map true src/style.scss src/style.css"
+  }
+}

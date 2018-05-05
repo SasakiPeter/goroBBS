@@ -15,7 +15,7 @@ export const readBoard = (board) => {
   }
 }
 
-export const addCommnt = (comments) => {
+export const addComment = (comments) => {
   return {
     type: "ADD_COMMENT",
     comments: comments

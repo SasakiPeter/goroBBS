@@ -12,7 +12,7 @@ const App = () => {
       <div>
         <CBoardList />
         <section>
-          <CBoardAdd/>
+          <CBoardAdd />
           <CCommentList />
         </section>
       </div>

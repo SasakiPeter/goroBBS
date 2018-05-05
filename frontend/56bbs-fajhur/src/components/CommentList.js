@@ -1,6 +1,6 @@
 import React from 'react';
 import CommentLine from './CommentLine';
-import CommentAdd from './CommentAdd';
+import CCommentAdd from '../containers/CCommentAdd';
 
 // commentsはjsonから取得したid,titleなどを含むコメントのlist
 const CommentList = ({ board }) => {
@@ -20,7 +20,7 @@ const CommentList = ({ board }) => {
     <ul>
       <h2>{board.title}</h2>
       {list}
-      <CommentAdd/>
+      <CCommentAdd />
     </ul>
   )
 };

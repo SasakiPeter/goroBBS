@@ -29,14 +29,10 @@ const mapDispatchToProps = (dispatch) => {
       const url = "http://127.0.0.1:8000/api/board/" + id + "/"
       console.log(url)
       fetch(url, { method: 'GET' })
-        .then(response => {
-          response.json()
-          console.log(response.json())
-        })
+        .then(response => response.json())
         .then(json => {
           console.log('コメントディスパッチできたよ！')
           // board:{json}になった
-          console.log(json)
           dispatch(readBoard(json))
         })
         .catch(error => {

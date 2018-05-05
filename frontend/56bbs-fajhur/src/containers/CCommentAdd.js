@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import CommentAdd from '../components/CommentAdd';
-import { readBoard, addComment } from '../actions/'
+import { readBoard, addComment } from '../actions'
 
 const mapStateToProps = (state) => {
   return {
@@ -11,20 +11,26 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onAddComment: (selBoard) => {
+    onAddComment: (id, comment) => {
       const url = 'http://127.0.0.1:8000/api/board/' + id + '/'
- fetch(url, { method: 'POST' })
-        .catch(error => {
-          console.log('コメントPOST失敗')
-        })
+      fetch(url, {
+        method: 'POST',
+        body: JSON.stringify(comment),
+      })
         .then(response => response.json())
         .then(json => {
-          console.log('コメントPOSTできたはず')
+          console.log("POST成功: ", json)
           // board:{json}になった
+          // ↓これいるの？
           dispatch(addComment(json))
+        })
+        .catch(error => {
+          console.log('コメントPOST失敗')
         })
     }
   }
 }
 
-const readComment=(selBoard)
+const CCommentAdd = connect(mapStateToProps, mapDispatchToProps)(CommentAdd)
+
+export default CCommentAdd;

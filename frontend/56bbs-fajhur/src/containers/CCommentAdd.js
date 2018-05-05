@@ -16,6 +16,7 @@ const mapDispatchToProps = (dispatch) => {
       fetch(url, {
         method: 'POST',
         body: JSON.stringify(comment),
+        mode: 'cors'
       })
         .then(response => response.json())
         .then(json => {

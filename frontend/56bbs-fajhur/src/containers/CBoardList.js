@@ -28,7 +28,7 @@ const mapDispatchToProps = (dispatch) => {
 
       const url = "http://127.0.0.1:8000/api/board/" + id + "/"
       console.log(url)
-      fetch(url, { method: 'GET' })
+      fetch(url, { method: 'GET', mode: 'cors' })
         .then(response => response.json())
         .then(json => {
           console.log('コメントディスパッチできたよ！')

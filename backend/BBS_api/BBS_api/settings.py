@@ -61,13 +61,17 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CORS_ORIGIN_ALLOW_ALL = True
-# CORS_ORIGIN_WHITELIST = (
-#     'localhost:3000/',
-#     'https://56bbs-fajhur.stackblitz.io',
-#     'https://stackblitz.com/edit/56bbs-fajhur',
-#     'https://stackblitz.com/edit/56bbs-fajhur?file=reducers%2FgetBoardReducer.js',
-# )
+# CORS_ORIGIN_ALLOW_ALL = True
+
+CORS_ORIGIN_WHITELIST = (
+    'localhost:3000/',
+    'localhost:3000',
+    '127.0.0.1:3000/',
+    '127.0.0.1:3000',
+    '56bbs-fajhur.stackblitz.io',
+    'stackblitz.com/edit/56bbs-fajhur',
+)
+
 
 ROOT_URLCONF = 'BBS_api.urls'
 

@@ -8,7 +8,7 @@ export default class BoardList extends React.Component {
 
   componentWillMount() {
     const url = 'http://127.0.0.1:8000/api/board/'
-    fetch(url, { method: 'GET' })
+    fetch(url, { method: 'GET', mode: "cors" })
       .then(response => response.json())
       .then(json => {
         console.log(json)
@@ -27,7 +27,7 @@ export default class BoardList extends React.Component {
         });
       })
       .catch(error => {
-        console.log('ボードディスパッチ出来ませんでしたorz')
+        console.log('ボードディスパッチ出来ませんでしたorz', error)
       })
   }
 

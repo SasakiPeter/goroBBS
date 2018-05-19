@@ -3,17 +3,18 @@ from django.db import models
 # Create your models here.
 import datetime
 from django.utils import timezone
+from django.contrib.auth.models import User
 
 
-class User(models.Model):
-    name = models.CharField(max_length=32)
-    mail = models.EmailField(null=True)
+# class User(models.Model):
+#     name = models.CharField(max_length=32)
+#     mail = models.EmailField(null=True)
 
-    def __str__(self):
-        return "{}: {}".format(self.pk, self.name)
+#     def __str__(self):
+#         return "{}: {}".format(self.pk, self.name)
 
-    def __repr__(self):
-        return "{}: {}".format(self.pk, self.name)
+#     def __repr__(self):
+#         return "{}: {}".format(self.pk, self.name)
 
 
 class Board(models.Model):

@@ -2,17 +2,18 @@ import React from 'react';
 import { connect } from 'react-redux';
 import CommentAdd from '../components/CommentAdd';
 import { readBoard, addComment } from '../actions'
+import selBoardReducer from '../reducers/selBoardReducer';
 
 const mapStateToProps = (state) => {
   return {
-
+    id: state.selBoardReducer
   }
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     onAddComment: (id, comment) => {
-      const url = 'http://127.0.0.1:8000/api/board/' + id + '/'
+      const url = 'http://127.0.0.1:8000/api/board/' + id + '/comments/'
       fetch(url, {
         method: 'POST',
         body: JSON.stringify(comment),
@@ -22,7 +23,7 @@ const mapDispatchToProps = (dispatch) => {
         .then(json => {
           console.log("POST成功: ", json)
           // board:{json}になった
-          // ↓これいるの？
+          // ↓これいるの？←謎
           dispatch(addComment(json))
         })
         .catch(error => {

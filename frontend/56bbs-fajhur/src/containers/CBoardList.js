@@ -5,13 +5,13 @@ import BoardList from '../components/BoardList';
 
 const mapStateToProps = (state) => {
   return {
-    datas: [{
-      id: 1,
-      title: "セリ科の生薬"
-    }, {
-      id: 2,
-      title: "マメ科の生薬"
-    }],
+    // datas: [{
+    //   id: 1,
+    //   title: "セリ科の生薬"
+    // }, {
+    //   id: 2,
+    //   title: "マメ科の生薬"
+    // }],
   }
 };
 
@@ -24,6 +24,7 @@ const mapDispatchToProps = (dispatch) => {
     onBoardClick: (id) => {
       // 思ったけどこのselectBoardってactionいらないんじゃない？
       // でも一応。これがあると、表示中のBoardのIDがわかるのか
+      // ↑CommentAddで表示中のBoardの選択に使う
       dispatch(selectBoard(id))
 
       const url = "http://127.0.0.1:8000/api/board/" + id + "/"

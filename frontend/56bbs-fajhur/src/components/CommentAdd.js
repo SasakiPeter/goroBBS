@@ -23,8 +23,16 @@ class CommentAdd extends React.Component {
     console.log(this.state.comment)
     console.log({ comment })
     console.log(comment)
-    // board_idをどこかで取得せねば
-    this.props.onAddComment(1, { comment })
+
+    // board_idをどこかで取得せねば！！！！！！！！！！！！！！！
+    // stateに入ってるはず
+    // selectBoardで
+    // selBoardしたReducerを、CCommentAddでstateとして
+
+    const id = this.props.id
+    console.log(id)
+
+    this.props.onAddComment(id, { comment })
     // ここで、{comment}とすると入力値が取得できるので、これをAPIにPOSTすればよいはず
     // POSTする関数をcontainerで作って、それをimportすればいい
     // でも、classcomponentにprops渡すのってどうするの？

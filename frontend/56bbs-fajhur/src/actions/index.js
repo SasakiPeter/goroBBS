@@ -41,3 +41,21 @@ export const fetchBoardListFailure = () => {
     type: "FETCH_BOARD_LIST_FAILURE"
   }
 };
+
+// Login
+export const Login = (username, password) => {
+  return {
+    type: "LOGIN",
+    username: username,
+    password, password,
+  }
+}
+
+export const saveToken = (token) => {
+  return {
+    type: "SAVE_TOKEN",
+    token
+  }
+}
+
+// export default a っていうのがあったら、上のやつは a.saveTokenでとれる

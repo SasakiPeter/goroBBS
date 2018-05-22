@@ -3,7 +3,7 @@ from django.shortcuts import render
 # Create your views here.
 from rest_framework import generics
 from rest_framework import status
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView
@@ -42,13 +42,14 @@ class CreateUser(APIView):
 
 
 class ListBoard(APIView):
-    permission_classes = (IsAuthenticated,)
+    # permission_classes = (IsAuthenticated,)
 
     def get(self, request, format=None):
         snippets = models.Board.objects.all()
         serializer = serializers.BoardSerializer(snippets, many=True)
         return Response(serializer.data)
 
+    @permission_classes((IsAuthenticated, ))
     def post(self, request, format=None):
         # contributorをログインしているユーザーにしようとしたが、キーの値くれといわれる
         # よって、request.user.username=>request.user.idとした

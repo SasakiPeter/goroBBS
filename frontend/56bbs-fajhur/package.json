@@ -3,12 +3,16 @@
   "description": "",
   "homepage": "https://stackblitz.com/edit/56bbs-fajhur",
   "dependencies": {
+    "npm": "^6.0.1",
     "react": "16.1.1",
     "react-dom": "16.1.1",
+    "react-redux": "5.0.7",
     "react-scripts": "1.0.10",
     "redux": "4.0.0-rc.1",
-    "react-redux": "5.0.7",
-    "redux-actions": "2.3.0"
+    "redux-actions": "2.3.0",
+    "redux-persist": "^5.9.1",
+    "to": "^0.2.9",
+    "update": "^0.7.4"
   },
   "version": "0.1.0",
   "private": true,

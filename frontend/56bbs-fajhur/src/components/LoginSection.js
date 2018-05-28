@@ -37,23 +37,31 @@ class LoginSection extends React.Component {
         const { username, password } = this.state
         console.log(this.props)
         return (
-            <li>
-                {//nameに入力値をいれてしまう
-                }
-                <input
-                    name="username"
-                    value={username}
-                    placeholder="add your name"
-                    onChange={this.handleChange}
-                ></input>
-                <input
-                    name="password"
-                    value={password}
-                    placeholder="add password"
-                    onChange={this.handleChange}
-                ></input>
-                <button onClick={this.handleSubmit}>add</button>
-            </li>
+            <div>
+                <h2>Log in</h2>
+                <div>
+                    <ul>
+                        <li>
+                            <p>username</p>
+                            <p><input
+                                name="username"
+                                value={username}
+                                onChange={this.handleChange}
+                            ></input></p>
+                        </li>
+                        <li>
+                            <p>password</p>
+                            <p><input
+                                type="password"
+                                name="password"
+                                value={password}
+                                onChange={this.handleChange}
+                            ></input></p>
+                        </li>
+                    </ul>
+                    <button onClick={this.handleSubmit}>add</button>
+                </div>
+            </div>
         )
     }
 }

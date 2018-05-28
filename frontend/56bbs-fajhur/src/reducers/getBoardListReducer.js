@@ -1,14 +1,14 @@
 // api から持ってきたBoardListを処理するためのreducer
 
-const getBoardListReducer = (state = {}, action) => {
+const getBoardListReducer = (state = [], action) => {
   switch (action.type) {
     case "FETCH_BOARD_LIST_REQUEST":
       return state;
     case "FETCH_BOARD_LIST_SUCCESS":
-      return {
+      return [
         ...state,
-        datas: action.json,
-      }
+        ...action.json,
+      ]
     // in case of failure
     default:
       return state;

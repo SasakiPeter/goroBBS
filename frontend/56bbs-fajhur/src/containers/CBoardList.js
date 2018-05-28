@@ -1,22 +1,31 @@
 import { connect } from 'react-redux';
-import { selectBoard, readBoard, fetchBoardListFailure } from '../actions/';
+import { selectBoard, readBoard, fetchBoardListFailure, fetchBoardListSuccess } from '../actions/';
 import BoardList from '../components/BoardList';
 
 
 const mapStateToProps = (state) => {
+  console.log(state.BoardListReducer)
   return {
-    // datas: [{
-    //   id: 1,
-    //   title: "セリ科の生薬"
-    // }, {
-    //   id: 2,
-    //   title: "マメ科の生薬"
-    // }],
+    boards: state.BoardListReducer
   }
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    // BL再読み込み君
+    reloadBoardList: () => {
+      const url = 'http://127.0.0.1:8000/api/board/'
+      fetch(url, { method: 'GET', mode: "cors" })
+        .then(response => response.json())
+        .then(json => {
+          dispatch(fetchBoardListSuccess(json))
+          console.log(json)
+          console.log('ボードディスパッチできたよ！')
+        })
+        .catch(error => {
+          console.log('ボードディスパッチ出来ませんでしたorz', error)
+        })
+    },
     // boardを選択したとき、idを取得
     // boardLineにpropsとして渡している
     // Boardをクリックしたときに、対応するAPIを取得して、commentsに格納してCommentListにpropsとして渡したい

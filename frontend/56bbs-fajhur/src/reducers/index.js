@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import selBoardReducer from './selBoardReducer';
-import getBoardListReducer from './getBoardListReducer';
+import BoardListReducer from './BoardListReducer';
 import getBoardReducer from './getBoardReducer';
 import LoginReducer from './LoginReducer';
 import saveTokenReducer from './saveTokenReducer';
@@ -8,7 +8,7 @@ import saveTokenReducer from './saveTokenReducer';
 
 const rootReducer = combineReducers({
   selBoardReducer: selBoardReducer,
-  getBoardListReducer: getBoardListReducer,
+  BoardListReducer: BoardListReducer,
   getBoardReducer: getBoardReducer,
   LoginReducer: LoginReducer,
   saveTokenReducer: saveTokenReducer,

@@ -1,5 +1,9 @@
-// readBoard,fetchBoardListFailureはBoardの選択の時に使った
-// selectBoardは意味がないかもしれない
+export const addBoard = (json) => {
+  return {
+    type: "ADD_BOARD",
+    json
+  }
+}
 
 export const selectBoard = (id) => {
   return {
@@ -47,14 +51,14 @@ export const Login = (username, password) => {
   return {
     type: "LOGIN",
     username: username,
-    password, password,
+    password: password,
   }
 }
 
 export const saveToken = (token) => {
   return {
     type: "SAVE_TOKEN",
-    token
+    token,
   }
 }
 

@@ -1,4 +1,3 @@
-import React from 'react';
 import { connect } from 'react-redux';
 import CommentAdd from '../components/CommentAdd';
 import { readBoard, addComment } from '../actions'
@@ -16,6 +15,10 @@ const mapDispatchToProps = (dispatch) => {
       const url = 'http://127.0.0.1:8000/api/board/' + id + '/comments/'
       fetch(url, {
         method: 'POST',
+        headers: {
+          'Authorization': 'JWT ' + localStorage.getItem('jwt'),
+          'content-type': 'application/json'
+        },
         body: JSON.stringify(comment),
         mode: 'cors'
       })

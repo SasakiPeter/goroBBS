@@ -27,9 +27,10 @@ const mapDispatchToProps = (dispatch) => {
                 .then(response => response.json())
                 .then(json => {
                     console.log("LoginPOST成功: ", json)
+                    // jsonにはtoken:...のobjが入ってる
                     // jsonをuserのlocalStorageに保存する 
                     // ここのactionはToken
-                    dispatch(saveToken(json))
+                    dispatch(saveToken(json.token))
                 })
                 .catch(error => {
                     console.log('LoginPOST失敗')

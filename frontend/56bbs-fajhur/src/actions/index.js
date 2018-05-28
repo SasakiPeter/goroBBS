@@ -19,10 +19,10 @@ export const readBoard = (board) => {
   }
 }
 
-export const addComment = (comments) => {
+export const addComment = (json) => {
   return {
     type: "ADD_COMMENT",
-    comments: comments
+    json
   }
 }
 

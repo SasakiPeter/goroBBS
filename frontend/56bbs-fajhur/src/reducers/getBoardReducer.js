@@ -17,6 +17,14 @@ const getBoardReducer = (state = initialState, action) => {
         ...state,
         ...action.board
       }
+    case "ADD_COMMENT":
+      return {
+        ...state,
+        comments: [
+          ...state.comments,
+          action.json
+        ]
+      }
     default:
       return state;
   }

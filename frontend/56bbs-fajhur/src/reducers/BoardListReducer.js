@@ -4,7 +4,7 @@ const BoardListReducer = (state = [], action) => {
         case "ADD_BOARD":
             return [
                 ...state,
-                ...action.json
+                action.json
             ]
         case "FETCH_BOARD_LIST_REQUEST":
             return state;

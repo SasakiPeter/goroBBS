@@ -4,7 +4,6 @@ import BoardList from '../components/BoardList';
 
 
 const mapStateToProps = (state) => {
-  console.log(state.BoardListReducer)
   return {
     boards: state.BoardListReducer
   }

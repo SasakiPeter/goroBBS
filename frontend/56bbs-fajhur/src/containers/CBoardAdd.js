@@ -25,7 +25,9 @@ const mapDispatchToProps = (dispatch) => {
         .then(json => {
           console.log("POST成功: ", json)
           // board:{json}になった
-          // Board追加したときに、更新する設定にしよう
+          // Board追加したときに、更新する設定にしよう←state書き換えればOK
+          // ADD_BOARDがdispatchされてstoreのstateにjsonがはいる
+          // このstateはstate.BoardListReducerでとれるはず
           dispatch(addBoard(json))
         })
         .catch(error => {

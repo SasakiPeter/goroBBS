@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
 import CommentAdd from '../components/CommentAdd';
 import { readBoard, addComment } from '../actions'
-import selBoardReducer from '../reducers/selBoardReducer';
 
 const mapStateToProps = (state) => {
   return {

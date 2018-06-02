@@ -2,17 +2,13 @@ import React from 'react';
 import CBoardList from '../containers/CBoardList';
 import CCommentList from '../containers/CCommentList';
 import CBoardAdd from '../containers/CBoardAdd';
-import CLoginSection from '../containers/CLoginSection';
-import CUserCreator from '../containers/CUserCreator';
+import NavigationBar from './NavigationBar';
+
 
 const App = () => {
   return (
     <div className="BBS">
-      <nav>
-        <h1>navigationbar</h1>
-        <CLoginSection />
-        <CUserCreator />
-      </nav>
+      <NavigationBar />
       <div>
         <CBoardList />
         <section>

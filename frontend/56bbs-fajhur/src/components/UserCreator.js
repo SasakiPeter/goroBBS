@@ -1,10 +1,26 @@
 import React from 'react';
+import { Form, Icon, input, Button, Checkbox, Input, Modal } from 'antd';
+
+const FormItem = Form.Item;
 
 class UserCreator extends React.Component {
     state = {
         username: "",
         email: "",
         password: "",
+        visible: false,
+    }
+
+    showModal = () => {
+        this.setState({
+            visible: true,
+        });
+    }
+
+    handleCancel = () => {
+        this.setState({
+            visible: false,
+        });
     }
 
     // このイベントはinputのこと
@@ -36,42 +52,49 @@ class UserCreator extends React.Component {
 
     render() {
         // props,stateからそれぞれ取得する
-        const { username, email, password } = this.state
+        const { username, email, password, visible } = this.state
         console.log(this.props)
         return (
             <div>
-                <h2>Create User</h2>
-                <div>
-                    <ul>
-                        <li>
-                            <p>username</p>
-                            <p><input
+                <a onClick={this.showModal}>Create User</a>
+                <Modal
+                    visible={visible}
+                    title="CreateUser"
+                    onCancel={this.handleCancel}
+                    footer={[
+                        <Button type="primary" onClick={this.handleSubmit}>新規登録</Button>,
+                    ]}>
+                    <Form>
+                        <FormItem>
+                            <Input
+                                prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                                placeholder="Username"
                                 name="username"
                                 value={username}
                                 onChange={this.handleChange}
-                            ></input></p>
-                        </li>
-                        <li>
-                            <p>email</p>
-                            <p><input
+                            />
+                        </FormItem>
+                        <FormItem>
+                            <Input
+                                prefix={<Icon type="mail" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                                placeholder="Email"
                                 name="email"
                                 value={email}
                                 type="email"
                                 onChange={this.handleChange}
-                            ></input></p>
-                        </li>
-                        <li>
-                            <p>password</p>
-                            <p><input
-                                type="password"
-                                name="password"
-                                value={password}
-                                onChange={this.handleChange}
-                            ></input></p>
-                        </li>
-                    </ul>
-                    <button onClick={this.handleSubmit}>新規登録</button>
-                </div>
+                            />
+                        </FormItem>
+                        <FormItem><Input
+                            prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                            placeholder="Password"
+                            type="password"
+                            name="password"
+                            value={password}
+                            onChange={this.handleChange}
+                        />
+                        </FormItem>
+                    </Form>
+                </Modal>
             </div>
         )
     }

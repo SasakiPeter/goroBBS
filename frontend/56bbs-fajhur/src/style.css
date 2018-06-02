@@ -1,13 +1,1 @@
-.BBS>div{
-    display: flex;
-}
-  
-aside{
-    width:30%;
-}
-  
-section{
-    width: 70%;
-}
-  
-  
+@import url(~antd/dist/antd.css);.BBS>div{display:flex}aside{width:30%}section{width:70%}form a{float:right}

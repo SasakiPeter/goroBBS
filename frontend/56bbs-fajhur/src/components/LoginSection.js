@@ -1,9 +1,25 @@
 import React from 'react';
+import { Form, Icon, input, Button, Checkbox, Input, Modal } from 'antd';
+
+const FormItem = Form.Item;
 
 class LoginSection extends React.Component {
     state = {
         username: "",
         password: "",
+        visible: false,
+    }
+
+    showModal = () => {
+        this.setState({
+            visible: true,
+        });
+    }
+
+    handleCancel = () => {
+        this.setState({
+            visible: false,
+        });
     }
 
     // このイベントはinputのこと
@@ -38,34 +54,43 @@ class LoginSection extends React.Component {
 
     render() {
         // props,stateからそれぞれ取得する
-        const { username, password } = this.state
+        const { username, password, visible } = this.state
         console.log(this.props)
         return (
             <div>
-                <h2>Log in</h2>
-                <div>
-                    <ul>
-                        <li>
-                            <p>username</p>
-                            <p><input
+                <a onClick={this.showModal}>Log in</a>
+                <Modal
+                    visible={visible}
+                    title="LOGIN"
+                    onCancel={this.handleCancel}
+                    footer={[
+                        <Button key="back" onClick={this.handleCancel}>Return</Button>,
+                        <Button type="primary" onClick={this.handleSubmit}>Log in</Button>,
+                        <Button type="secondary" onClick={this.logoutSubmit}>Log out</Button>,
+                    ]}>
+                    <Form>
+                        <FormItem>
+                            <Input
+                                prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                                placeholder="Username"
                                 name="username"
                                 value={username}
                                 onChange={this.handleChange}
-                            ></input></p>
-                        </li>
-                        <li>
-                            <p>password</p>
-                            <p><input
+                            />
+                        </FormItem>
+                        <FormItem>
+                            <Input
+                                prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                                placeholder="Password"
                                 type="password"
                                 name="password"
                                 value={password}
                                 onChange={this.handleChange}
-                            ></input></p>
-                        </li>
-                    </ul>
-                    <button onClick={this.handleSubmit}>LOGIN</button>
-                    <button onClick={this.logoutSubmit}>LOGOUT</button>
-                </div>
+                            />
+                        </FormItem>
+                        <a href="#">Forgot password</a>
+                    </Form>
+                </Modal>
             </div>
         )
     }

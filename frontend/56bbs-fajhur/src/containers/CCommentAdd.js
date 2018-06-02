@@ -24,8 +24,7 @@ const mapDispatchToProps = (dispatch) => {
         .then(response => response.json())
         .then(json => {
           console.log("POST成功: ", json)
-          // board:{json}になった
-          // ↓これいるの？←謎
+          // post後にstoreのstateを書き換えるのに必要
           dispatch(addComment(json))
         })
         .catch(error => {

@@ -35,6 +35,11 @@ const mapDispatchToProps = (dispatch) => {
                 .catch(error => {
                     console.log('LoginPOST失敗')
                 })
+        },
+
+        // localStorageのkeyを消したい
+        postLogout: () => {
+            localStorage.removeItem("jwt");
         }
     }
 }

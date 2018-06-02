@@ -16,8 +16,9 @@ from . import models
 from . import serializers
 
 
+# なぜか認証が必要になってる←やべぇ
 class CreateUser(APIView):
-    def post(self, request):
+    def post(self, request, format=None):
         user = User.objects.create_user(
             request.POST["name"], request.POST["email"], request.POST["password"])
         user.is_staff = False
@@ -71,11 +72,9 @@ class DetailBoard(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = serializers.BoardSerializer
 
 
-# board/pkにcommentを追加したい ↓できてない
+# jsonでcommentを受け取る　board(id)と、contributor(id)は取得
 class CreateComment(APIView):
-    permission_classes = (IsAuthenticated,)
-
-    # jsonでcommentを受け取る　board(id)と、contributor(id)は取得
+    @permission_classes((IsAuthenticated, ))
     def post(self, request, pk, format=None):
         # request.data['contributor'] = request.user.id
         # request.data['board'] = pk

@@ -3,6 +3,7 @@ import CBoardList from '../containers/CBoardList';
 import CCommentList from '../containers/CCommentList';
 import CBoardAdd from '../containers/CBoardAdd';
 import CLoginSection from '../containers/CLoginSection';
+import CUserCreator from '../containers/CUserCreator';
 
 const App = () => {
   return (
@@ -10,6 +11,7 @@ const App = () => {
       <nav>
         <h1>navigationbar</h1>
         <CLoginSection />
+        <CUserCreator />
       </nav>
       <div>
         <CBoardList />

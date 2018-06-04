@@ -1,6 +1,7 @@
 import React from 'react';
-import { Select } from 'antd';
+import { Select, Input, Button, message } from 'antd';
 const Option = Select.Option;
+const { TextArea } = Input;
 
 
 // dbで管理したい
@@ -42,7 +43,7 @@ class BoardAdd extends React.Component {
   };
 
   handleSubmit = () => {
-    const { board } = this.state
+    const { board, tags } = this.state
     console.log(this.state)
     console.log(this.state.board)
     console.log({ board })
@@ -52,8 +53,15 @@ class BoardAdd extends React.Component {
     // stateに入ってるはず
     // selectBoardで
     // selBoardしたReducerを、CCommentAddでstateとして
+    if (board == "") {
+      message.error('投稿内容は空欄にはできません。')
+    } else {
+      this.props.onAddBoard(board)
+    }
 
-    this.props.onAddBoard(board)
+
+
+    // tagsを追加する挙動が必要
   }
 
   render() {
@@ -72,14 +80,17 @@ class BoardAdd extends React.Component {
         >
           {children}
         </Select>
-        <input
-          type="text"
+        <TextArea
           name="board"
           value={board}
-          placeholder="add board"
+          placeholder="覚えたいコンテンツを入力してください。"
+          autosize
           onChange={this.handleChange}
-        ></input>
-        <button onClick={this.handleSubmit}>ゴロを募集する</button>
+        />
+        <Button
+          type="primary"
+          onClick={this.handleSubmit}
+        >ゴロを募集する</Button>
       </div >
     )
   }

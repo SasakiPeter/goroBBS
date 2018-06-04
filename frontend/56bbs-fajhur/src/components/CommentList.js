@@ -1,5 +1,4 @@
 import React from 'react';
-import CommentLine from './CommentLine';
 import CCommentAdd from '../containers/CCommentAdd';
 import { Table, Icon, Switch, Radio, Form, Divider } from 'antd';
 

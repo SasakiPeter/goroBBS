@@ -11,6 +11,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onAddBoard: (title) => {
+      // ここ、titleが空白だったらalert出す設定にしないとだめじゃね？
+
       const url = 'http://127.0.0.1:8000/api/board/'
       fetch(url, {
         method: 'POST',

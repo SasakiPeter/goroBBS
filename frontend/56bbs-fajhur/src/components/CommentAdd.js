@@ -1,4 +1,6 @@
 import React from 'react';
+import { Input, Button, message } from 'antd';
+const { TextArea } = Input;
 
 class CommentAdd extends React.Component {
   state = {
@@ -31,8 +33,12 @@ class CommentAdd extends React.Component {
 
     const id = this.props.id
     console.log(id)
+    if (comment === "") {
+      message.error('ゴロを入力してください。')
+    } else {
+      this.props.onAddComment(id, { comment })
+    }
 
-    this.props.onAddComment(id, { comment })
     // ここで、{comment}とすると入力値が取得できるので、これをAPIにPOSTすればよいはず
     // POSTする関数をcontainerで作って、それをimportすればいい
     // でも、classcomponentにprops渡すのってどうするの？
@@ -44,17 +50,26 @@ class CommentAdd extends React.Component {
     const { comment } = this.state;
     console.log(this.props)
     return (
-      <li>
-        {//nameに入力値をいれてしまう
-        }
-        <input
+      <div>
+        <TextArea
           name="comment"
           value={comment}
-          placeholder="add comment"
+          placeholder="ゴロ"
+          autosize
           onChange={this.handleChange}
-        ></input>
-        <button onClick={this.handleSubmit}>add</button>
-      </li>
+        />
+        <TextArea
+          name="comment"
+          value={comment}
+          placeholder="解説"
+          autosize
+          onChange={this.handleChange}
+        />
+        <Button
+          type="primary"
+          onClick={this.handleSubmit}
+        >追加</Button>
+      </div>
     )
   }
 }

@@ -1,9 +1,36 @@
 import React from 'react';
+import { Select } from 'antd';
+const Option = Select.Option;
+
+
+// dbで管理したい
+// dbでタグを記録した後に、取得するputで
+// その形式は、key(id)とtagが入ったやつ
+
+// どうでもいいけどtoStringにすると、引数進数になる
+const children = [];
+for (let i = 10; i < 36; i++) {
+  children.push(
+    <Option
+      key={i.toString(36) + i}
+    >{i.toString(36) + i}</Option>
+  )
+}
+
 
 class BoardAdd extends React.Component {
   state = {
-    board: ""
+    board: "",
+    tags: [],
   }
+  // 本来下と同じでいいはず
+  handleChangeTag = event => {
+    this.setState(
+      { tags: event }
+    );
+    console.log(event)
+    console.log(this.state)
+  };
 
   handleChange = event => {
     this.setState(
@@ -30,13 +57,21 @@ class BoardAdd extends React.Component {
   }
 
   render() {
-    // props,stateからそれぞれ取得する
-    const { board } = this.state;
+    const { board, tags } = this.state;
     console.log(this.props)
     return (
       <div>
-        {//nameに入力値をいれてしまう
-        }
+        <Select
+          name="tags"
+          mode="tags"
+          // size="large"
+          placeholder="Please select"
+          defaultValue={['薬学']}
+          onChange={this.handleChangeTag}
+          style={{ width: '100%' }}
+        >
+          {children}
+        </Select>
         <input
           type="text"
           name="board"
@@ -45,7 +80,7 @@ class BoardAdd extends React.Component {
           onChange={this.handleChange}
         ></input>
         <button onClick={this.handleSubmit}>ゴロを募集する</button>
-      </div>
+      </div >
     )
   }
 }

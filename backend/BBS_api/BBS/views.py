@@ -16,7 +16,6 @@ from . import models
 from . import serializers
 
 
-# なぜか認証が必要になってる←やべぇ
 class CreateUser(APIView):
     def post(self, request, format=None):
         user = User.objects.create_user(
@@ -53,6 +52,7 @@ class ListBoard(APIView):
     @permission_classes((IsAuthenticated, ))
     def post(self, request, format=None):
         # contributorをログインしているユーザーにしようとしたが、キーの値くれといわれる
+        # ↑なぜならば、modelでForeignKeyにしてるからkey必要
         # よって、request.user.username=>request.user.idとした
         # request.data["contributor"] = request.user.id
         data = {
@@ -81,8 +81,10 @@ class CreateComment(APIView):
         # 上記のように書いてはいけない
         data = {
             'board': pk,
-            'comment': request.data["comment"],
+            'goro': request.data["goro"],
+            'commentary': request.data["commentary"],
             'contributor': request.user.id,
+            # 'contributorName': request.user.username,
             'pub_date': timezone.now().date(),
         }
         serializer = serializers.CommentSerializer(data=data)

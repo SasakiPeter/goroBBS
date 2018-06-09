@@ -7,14 +7,18 @@ import { Table, Icon, Switch, Radio, Form, Divider } from 'antd';
 
 // dataIndexが表示させる情報と、columnsを紐づけている
 const columns = [{
-  title: "comment",
-  dataIndex: "comment",
-  key: "comment",
+  title: "goro",
+  dataIndex: "goro",
+  key: "goro",
 }, {
   title: "pub_date",
   dataIndex: "pub_date",
   key: "pub_date",
 
+}, {
+  title: "contributor",
+  dataIndex: "contributor",
+  key: "contributor",
 }, {
   title: "votes",
   dataIndex: "votes",
@@ -74,10 +78,11 @@ const CommentList = ({ board }) => {
   board.comments.map((b) => {
     data.push({
       key: b.id,
-      comment: b.comment,
+      goro: b.goro,
       pub_date: b.pub_date,
+      contributor: b.contributor,
       votes: b.votes,
-      children: [{ comment: b.comment }],
+      children: [{ goro: b.commentary }],
     });
   })
   return (

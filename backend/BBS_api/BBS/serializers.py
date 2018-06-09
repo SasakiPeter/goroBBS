@@ -7,7 +7,8 @@ class CommentSerializer(serializers.ModelSerializer):
         fields = (
             'id',
             'board',
-            'comment',
+            'goro',
+            'commentary',
             'contributor',
             'pub_date',
             'votes',
@@ -32,9 +33,9 @@ class BoardSerializer(serializers.ModelSerializer):
         read_only=True,
     )
     # この値は、ログインしてたら勝手に入力されるようにしたいから、わざわざPOSTする必要ない
-    # contributor = UserSerializer(
+    # contri = UserSerializer(
     #     many=True,
-    #     read_only=False,
+    #     read_only=True,
     # )
 
     class Meta:
@@ -42,6 +43,7 @@ class BoardSerializer(serializers.ModelSerializer):
             'id',
             'title',
             'contributor',
+            # 'contri',
             'published_at',
             'updated_at',
             'comments',

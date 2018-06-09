@@ -4,7 +4,7 @@ from django.db import models
 import datetime
 from django.utils import timezone
 from django.contrib.auth.models import User
-
+# from django.contrib.auth.models import AbstractUser
 
 # class User(models.Model):
 #     name = models.CharField(max_length=32)
@@ -39,15 +39,37 @@ class Board(models.Model):
 
 
 class Comment(models.Model):
-    # Board.commentsってやると逆参照できる
+    # Board.commentsってやると逆参照できる===Boardにcommentsを追加したのと同義
+    # ↑これがあるから、Board serializerで使える
+    # もちろん、Comment.boardもできる(参照)
     board = models.ForeignKey(
         Board, related_name='comments', on_delete=models.CASCADE)
-    comment = models.TextField()
+    goro = models.TextField()
+    commentary = models.TextField(null=True)
+
     # User.commentsってやるとそのユーザーがresponceした一覧を取得できる
+    # comment.contributor.username
     contributor = models.ForeignKey(
-        User, related_name='comments', on_delete=models.CASCADE, null=True)
+        User, related_name='comments', on_delete=models.CASCADE)
     pub_date = models.DateField('date published')
     votes = models.IntegerField(default=0)
 
     def __str__(self):
-        return self.comment
+        return self.goro
+
+
+# class Person(User):
+#     class Meta:
+#         proxy = True
+#         # ordering = ('username',)
+#     board = models.ForeignKey(
+#         Board, related_name='contributor', on_delete=models.CASCADE)
+#     comment = models.ForeignKey(
+#         Comment, related_name='contributor', on_delete=models.CASCADE)
+
+
+# class User(models.Model):
+#     board = models.ForeignKey(
+#         Board, related_name='contributor', on_delete=models.CASCADE)
+#     comment = models.ForeignKey(
+#         Comment, related_name='contributor', on_delete=models.CASCADE)

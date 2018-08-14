@@ -10,7 +10,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onAddComment: (id, goro, commentary) => {
+    onAddComment: (id, comment) => {
       const url = 'http://127.0.0.1:8000/api/board/' + id + '/comments/'
       fetch(url, {
         method: 'POST',
@@ -18,7 +18,7 @@ const mapDispatchToProps = (dispatch) => {
           'Authorization': 'JWT ' + localStorage.getItem('jwt'),
           'content-type': 'application/json'
         },
-        body: JSON.stringify(goro, commentary),
+        body: JSON.stringify(comment),
         mode: 'cors'
       })
         .then(response => response.json())
